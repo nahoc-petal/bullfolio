@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="loaderWrapper">
+        <div class="loader"></div>
+    </div>
+    <section id="balance" class="hero is-medium is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title has-text-centered is-size-1 has-text-white">
+                    20,000$
+                </h1>
+                <h2 class="subtitle has-text-centered has-text-white">
+                    Total Value
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <table id="coinTable" class="coins table tablesorter">
+                <thead>
+                    <tr>
+                        <th data-sort="int">Rank</th>
+                        <th data-sort="string">Symbol</th>
+                        <th data-sort="string">Name</th>
+                        <th data-sort="float" class="has-text-right">Last hour</th>
+                        <th data-sort="float" class="has-text-right">Last 24h</th>
+                        <th data-sort="float" class="has-text-right">Last week</th>
+                        <th data-sort="float" class="has-text-right">Value ($US)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDOm4jKsWwOWCcfNQD63DD3JL0mmSGd8h4",
+            authDomain: "cryptoboard2.firebaseapp.com",
+            databaseURL: "https://cryptoboard2.firebaseio.com",
+            projectId: "cryptoboard2",
+            storageBucket: "",
+            messagingSenderId: "650100096146"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/stupidtable.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
