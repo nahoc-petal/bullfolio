@@ -14,7 +14,7 @@
   left: 0;
   bottom: 0;
   background-color: white;
-  z-index: 1;
+  z-index: 5;
   display: flex;
   align-items: center; }
 
@@ -38,7 +38,7 @@ table th:hover {
 
 .login,
 #balance {
-  background-image: url("http://hdwallpapers2013.com/wp-content/uploads/2013/03/Space-Galaxy-Wallpaper.jpg") !important;
+  background-image: url("../images/space.jpg") !important;
   background-size: cover;
   background-position: top center; }
 
@@ -60,14 +60,13 @@ table th:hover {
   right: 0;
   text-align: center; }
 
-.hero-body {
-  background-color: rgba(0, 0, 0, 0.64); }
-
 .spacer {
   border-top: 2px solid white;
   margin-bottom: 0.4rem; }
 
 .hero-body {
+  margin-top: 56px;
+  background-color: rgba(0, 0, 0, 0.42);
   padding-top: 6.4rem !important;
   padding-bottom: 4.4rem !important; }
 
@@ -87,6 +86,12 @@ table th:hover {
   margin-left: 6px;
   top: 14px;
   font-size: 10px; }
+
+.is-grouped {
+  align-items: center; }
+
+.navbar {
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1); }
 
 .btc-color {
   border-color: #F0933A; }

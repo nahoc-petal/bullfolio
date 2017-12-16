@@ -14,7 +14,7 @@
     <div class="loaderWrapper">
         <div class="loader"></div>
     </div>
-    <nav class="navbar is-transparent">
+    <nav class="navbar is-transparent is-fixed-top">
         <div class="container">
             <div class="navbar-brand">
                 <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
@@ -26,20 +26,21 @@
 
             <div id="navbarExampleTransparentExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="dashboard.html/">
+                    <a class="navbar-item is-active" href="dashboard.html/">
                         Dashboard
                     </a>
                     <a class="navbar-item" href="dashboard.html/">
                         Settings
-                    </a>
-                    <a class="navbar-item" href="dashboard.html/">
-                        About
                     </a>
                 </div>
 
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="field is-grouped">
+                            <p class="control">
+                                <a class="navbar-item" href="about.html">About
+                                </a>
+                            </p>
                             <p class="control">
                                 <a class="button" href="#">
                                     <span>Log out</span>
@@ -68,17 +69,28 @@
     </section>
     <section class="section">
         <div class="container">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="Search coin">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-search"></i>
+                    </span>
+                    <br/><br/>
+                </p>
+            </div>
             <table id="coinTable" class="coins table tablesorter is-striped is-fullwidth">
                 <thead>
                     <tr>
-                        <th>Logo</th>
+                        <th>
+                            <!-- Logo -->
+                        </th>
                         <th data-sort="string">Symbol</th>
                         <th data-sort="string">Name</th>
                         <th data-sort="float" class="has-text-right">Last hour</th>
                         <th data-sort="float" class="has-text-right">Last 24h</th>
                         <th data-sort="float" class="has-text-right">Last week</th>
                         <th data-sort="float" class="has-text-right">Value ($US)</th>
-                        <th data-sort="float" class="has-text-right">Holdings</th> 
+                        <th data-sort="float" class="has-text-right">Holdings</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -86,7 +98,6 @@
         </div>
     </section>
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-    <script src="js/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/stupidtable.min.js"></script>
     <script src="js/script.js"></script>
