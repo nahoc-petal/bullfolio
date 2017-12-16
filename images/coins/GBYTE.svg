@@ -1,1 +1,15 @@
-<svg width="250" height="250" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="125.5" cy="125.5" r="112.5"/></defs><g fill="none" fill-rule="evenodd"><use fill="#FFF" xlink:href="#a"/><circle stroke="#000" stroke-width="24" cx="125.5" cy="125.5" r="100.5"/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 250 250" style="enable-background:new 0 0 250 250;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:none;stroke:#212121;stroke-width:24;}
+</style>
+<g>
+	<g>
+		<circle id="a" class="st0" cx="125.5" cy="125.5" r="112.5"/>
+	</g>
+	<circle class="st1" cx="125.5" cy="125.5" r="100.5"/>
+</g>
+</svg>
