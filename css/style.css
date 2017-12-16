@@ -1,76 +1,103 @@
-.coins {
-    width: 100%;
-}
-
+@charset "UTF-8";
 .positiveValue {
-    color: #2ecc71;
-}
+  color: #2ecc71; }
 
 .negativeValue {
-    color: #e74c3c;
-}
+  color: #e74c3c; }
 
 .loaderWrapper {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: white;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-}
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 1;
+  display: flex;
+  align-items: center; }
+
+table td,
+table th {
+  vertical-align: middle !important; }
 
 .loader {
-    position: absolute;
-    width: 2.4em;
-    height: 2.4em;
-    margin: auto;
-    left: 0;
-    right: 0;
-}
+  position: absolute;
+  width: 2.4em;
+  height: 2.4em;
+  margin: auto;
+  left: 0;
+  right: 0; }
+
+.holding-input {
+  max-width: 100px; }
+
+table th:hover {
+  cursor: pointer; }
 
 .login,
 #balance {
-    background-image: url('http://hdwallpapers2013.com/wp-content/uploads/2013/03/Space-Galaxy-Wallpaper.jpg')!important;
-    background-size: cover;
-    background-position: top center;
-}
+  background-image: url("http://hdwallpapers2013.com/wp-content/uploads/2013/03/Space-Galaxy-Wallpaper.jpg") !important;
+  background-size: cover;
+  background-position: top center; }
 
 .login {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-}
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center; }
 
-.loginButtons{
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-}
+.coinLogoImage {
+  margin-top: 6px; }
+
+.loginButtons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center; }
 
 .hero-body {
-    background-color: rgba(0, 0, 0, 0.5);
-}
+  background-color: rgba(0, 0, 0, 0.64); }
 
 .spacer {
-    border-top: 1px solid white;
-    margin-bottom: 0.4rem;
-}
+  border-top: 2px solid white;
+  margin-bottom: 0.4rem; }
 
 .hero-body {
-    padding-top: 6.4rem!important;
-    padding-bottom: 6rem!important;
-}
+  padding-top: 6.4rem !important;
+  padding-bottom: 4.4rem !important; }
 
 .coin-holding {
-    margin-bottom: 0.4rem!important;
-}
+  margin-bottom: 0.4rem !important; }
+
+.sorting-asc:after {
+  content: '▲';
+  position: absolute;
+  margin-left: 6px;
+  top: 12px;
+  font-size: 10px; }
+
+.sorting-desc:after {
+  content: '▼';
+  position: absolute;
+  margin-left: 6px;
+  top: 14px;
+  font-size: 10px; }
+
+.btc-color {
+  border-color: #F0933A; }
+
+.eth-color {
+  border-color: #8B92AF; }
+
+.dash-color {
+  border-color: #3775B7; }
+
+.ltc-color {
+  border-color: #BEBEBE; }
+
+/*# sourceMappingURL=style.css.map */

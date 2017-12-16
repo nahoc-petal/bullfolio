@@ -8,14 +8,14 @@ let config = {
     messagingSenderId: "650100096146"
 };
 firebase.initializeApp(config);
-const database = firebase.database();
-const userId = null;
+let database = firebase.database();
+let userId = null;
 let myCoins = null;
 
 /**
  * Function that fetches the coins holding of a logged in user
  */
-const fetchCoins = function () {
+const fetchCoins = () => {
     const promise = new Promise(function (resolve, reject) {
         firebase.database().ref('myCoins/' + userId).once('value').then((snapshot) => {
             // Fetch completed
@@ -29,24 +29,43 @@ const fetchCoins = function () {
 /**
  * Function that writes the coins holding to the database
  */
-writeUserData = (userId, coinSymbol, coinName, coinQuantity) => {
-    firebase.database().ref('myCoins/' + userId + '/' + coinSymbol).set({
-        quantity: coinQuantity,
-        name: coinName,
+const writeUserData = (userId, coinSymbol, coinName, coinQuantity, coinPrice) => {
+    console.log('in write');
+    const promise = new Promise(function (resolve, reject) {
+        firebase.database().ref('myCoins/' + userId + '/' + coinSymbol).set({
+            quantity: coinQuantity,
+            name: coinName,
+            price: coinPrice,
+        })
     });
-}
+    return promise;
+};
 
 /**
  * Function that prints our top 5 cryptos
  */
-const renderTopFive = function (coinObject) {
+const renderTopFive = (coinObject) => {
+    let i = 0;
     console.log(coinObject);
+    $.each(coinObject, function (index, value) {
+        if (i < 6) {
+            console.log(index);
+            $('#myTopFive').append(
+                `<div class="column has-text-centered">
+                    <h3 class="subtitle has-text-white coin-holding">${value.name}</h3>
+                    <div class="spacer ${index.toLowerCase()}-color"></div>
+                    <h4 class="holding subtitle has-text-white">$${(value.price * value.quantity).toFixed(2)}</h4>
+                </div>`
+            );
+        }
+        i++;
+    });
 };
 
 /**
  * Function that checks if the user is logged in
  */
-const isUserLoggedIn = function () {
+const isUserLoggedIn = () => {
     const promise = new Promise(function (resolve, reject) {
         firebase.auth().onAuthStateChanged((user) => {
             (user) ? userId = user.uid: window.location.replace('index.html');
