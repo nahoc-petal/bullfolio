@@ -137,7 +137,9 @@ const renderCoinsTable = (allCoinsObject) => {
                 <td data-sort-value="${item.percent_change_24h}" class="coinPercentChange24h has-text-right ${isPositive(item.percent_change_24h)}">${item.percent_change_24h}%</td>
                 <td data-sort-value="${item.percent_change_7d}" class="coinPercentChange7d has-text-right ${isPositive(item.percent_change_7d)}">${item.percent_change_7d}%</td>
                 <td data-sort-value="${item.price_usd}" class="has-text-right coinPrice">$${numberWithCommas(item.price_usd)}</td>
-                <td class="has-text-right"><input value="${coinQuantity}" placeholder="0" class="input holding-input has-text-right coinQuantity" type="number"/></td>
+                <td data-sort-value="${coinQuantity}" class="quantity-cell control has-icons-left">
+                    <input value="${coinQuantity}" placeholder="0" class="input holding-input has-text-right coinQuantity" type="number"/>
+                </td>
             </tr>`
         );
     });
@@ -147,12 +149,15 @@ const renderCoinsTable = (allCoinsObject) => {
 
     // On focus out, update the quantity
     $(".holding-input").focusout(function () {
-        let coinSymbol = $(this).parent().prevAll('.coinSymbol').html();
-        let coinName = $(this).parent().prevAll('.coinName').html();
-        let coinPrice = $(this).parent().prevAll('.coinPrice').html().replace(/[^\d.-]/g, '');
-        let coinQuantity = $(this).val().replace(/[^\d.-]/g, '');
-        if (coinQuantity !== "") {
-            writeUserData(userId, coinSymbol, coinName, coinQuantity, coinPrice);
+        if ($(this).val() !== "") {
+            $(this).parent().addClass('is-loading');
+            let coinSymbol = $(this).parent().prevAll('.coinSymbol').html();
+            let coinName = $(this).parent().prevAll('.coinName').html();
+            let coinPrice = $(this).parent().prevAll('.coinPrice').html().replace(/[^\d.-]/g, '');
+            let coinQuantity = $(this).val().replace(/[^\d.-]/g, '');
+            writeUserData(userId, coinSymbol, coinName, coinQuantity, coinPrice).then(
+                $(this).parent().removeClass('is-loading')
+            );
         }
     });
 

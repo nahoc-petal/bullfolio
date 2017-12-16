@@ -34,8 +34,14 @@ table th {
     right: 0;
 }
 
-.holding-input {
-    max-width: 100px;
+.quantity-cell {
+    max-width: 130px;
+}
+
+.is-loading::after {
+    left: 1.4em!important;
+    top: 1.2em!important;
+    right: initial!important;
 }
 
 .has-no-margin {
@@ -71,7 +77,7 @@ table th:hover {
     margin-top: 6px;
 }
 
-.loginButtons{
+.loginButtons {
     position: absolute;
     left: 0;
     right: 0;
