@@ -119,4 +119,34 @@ table th:hover {
 .ltc-color {
   border-color: #BEBEBE; }
 
+.btc-color {
+  border-color: #F0933A; }
+
+.eth-color {
+  border-color: #8B92AF; }
+
+.dash-color {
+  border-color: #3775B7; }
+
+.ltc-color {
+  border-color: #BEBEBE; }
+
+.xrp-color {
+  border-color: #3C8EC3; }
+
+.neo-color {
+  border-color: #74BC38; }
+
+.omg-color {
+  border-color: #2657E7; }
+
+.doge-color {
+  border-color: #BEA649; }
+
+.bcn-color {
+  border-color: #DB5384; }
+
+.steem-color {
+  border-color: #60A1EC; }
+
 /*# sourceMappingURL=style.css.map */

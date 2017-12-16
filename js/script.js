@@ -11,6 +11,24 @@ firebase.initializeApp(config);
 let database = firebase.database();
 let userId = null;
 let myCoins = null;
+let balance = null;
+
+/**
+ * Function that renders the total balance
+ */
+const renderTotalBalance = (totalBalance) => {
+    $('.balance').html('$' + numberWithCommas(totalBalance.toFixed(2)));
+}
+
+/**
+ * Function that calculates the total balance
+ */
+const calcultateTotalBalance = () => {
+    $.each(myCoins, function (index, value) {
+        balance += value.quantity * value.price;
+    });
+    renderTotalBalance(balance);
+}
 
 /**
  * Function that returns a negativeValue class if the number is negative and
@@ -123,10 +141,16 @@ const removeLoader = () => {
 const renderCoinsTable = (allCoinsObject) => {
     let coins = [];
     const $coins = $('.coins');
+    console.log(myCoins);
+    if (myCoins) {
+
+    }
     $.each(allCoinsObject, function (i, item) {
         let coinQuantity = "";
-        if (item.symbol in myCoins) {
-            coinQuantity = myCoins[item.symbol].quantity;
+        if (myCoins) {
+            if (item.symbol in myCoins) {
+                coinQuantity = myCoins[item.symbol].quantity;
+            }
         }
         coins.push(
             `<tr>
@@ -160,16 +184,7 @@ const renderCoinsTable = (allCoinsObject) => {
             );
         }
     });
-
     removeLoader();
-};
-
-/**
- * Function that fills the holding inputs
- */
-const fillHoldingInputs = (coinObject) => {
-    console.log('in');
-    console.log(coinObject);
 };
 
 /**
@@ -193,7 +208,8 @@ init = () => {
         .then(fetchCoins)
         .then(renderTopFive)
         .then(fetchAllCoinsFromAPI)
-        .then(renderCoinsTable);
+        .then(renderCoinsTable)
+        .then(calcultateTotalBalance);
 }
 
 // Init
