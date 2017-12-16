@@ -24,6 +24,8 @@ const renderTotalBalance = (totalBalance) => {
  * Function that calculates the total balance
  */
 const calcultateTotalBalance = () => {
+    // Reset the balance in case of an update
+    balance = 0;
     $.each(myCoins, function (index, value) {
         balance += value.quantity * value.price;
     });
@@ -71,17 +73,20 @@ const writeUserData = (userId, coinSymbol, coinName, coinQuantity, coinPrice) =>
             name: coinName,
             price: coinPrice,
         })
+        resolve(true);
     });
     return promise;
 };
 
 /**
- * Function that prints our top 5 cryptos
+ * Function that renders our top 5 cryptos
  */
-const renderTopFive = (coinObject) => {
+const renderTopFive = () => {
+    // We delete the top 5 in case it's an update
+    $('#myTopFive').html("");
     const promise = new Promise(function (resolve, reject) {
         let i = 0;
-        $.each(coinObject, function (index, value) {
+        $.each(myCoins, function (index, value) {
             if (i < 6) {
                 $('#myTopFive').append(
                     `<div class="top-five-coin column has-text-centered">
@@ -104,7 +109,7 @@ const renderTopFive = (coinObject) => {
         });
 
         // Resolve the promise
-        resolve(coinObject);
+        resolve(myCoins);
     });
     return promise;
 };
@@ -141,10 +146,6 @@ const removeLoader = () => {
 const renderCoinsTable = (allCoinsObject) => {
     let coins = [];
     const $coins = $('.coins');
-    console.log(myCoins);
-    if (myCoins) {
-
-    }
     $.each(allCoinsObject, function (i, item) {
         let coinQuantity = "";
         if (myCoins) {
@@ -173,16 +174,19 @@ const renderCoinsTable = (allCoinsObject) => {
 
     // On focus out, update the quantity
     $(".holding-input").focusout(function () {
-        if ($(this).val() !== "") {
-            $(this).parent().addClass('is-loading');
-            let coinSymbol = $(this).parent().prevAll('.coinSymbol').html();
-            let coinName = $(this).parent().prevAll('.coinName').html();
-            let coinPrice = $(this).parent().prevAll('.coinPrice').html().replace(/[^\d.-]/g, '');
-            let coinQuantity = $(this).val().replace(/[^\d.-]/g, '');
-            writeUserData(userId, coinSymbol, coinName, coinQuantity, coinPrice).then(
-                $(this).parent().removeClass('is-loading')
-            );
-        }
+        $(this).parent().addClass('is-loading');
+        let coinSymbol = $(this).parent().prevAll('.coinSymbol').html();
+        let coinName = $(this).parent().prevAll('.coinName').html();
+        let coinPrice = $(this).parent().prevAll('.coinPrice').html().replace(/[^\d.-]/g, '');
+        let coinQuantity = $(this).val().replace(/[^\d.-]/g, '');
+        console.log(coinQuantity);
+        (coinQuantity === '') ? coinQuantity = 0: null;
+        writeUserData(userId, coinSymbol, coinName, coinQuantity, coinPrice)
+            .then(fetchCoins)
+            .then(renderTopFive)
+            .then(calcultateTotalBalance);
+
+        $(this).parent().removeClass('is-loading');
     });
     removeLoader();
 };
