@@ -33,6 +33,12 @@ table th {
 .holding-input {
   max-width: 100px; }
 
+.has-no-margin {
+  margin: 0 !important; }
+
+.has-no-padding {
+  padding: 0 !important; }
+
 table th:hover {
   cursor: pointer; }
 
@@ -66,9 +72,12 @@ table th:hover {
 
 .hero-body {
   margin-top: 56px;
-  background-color: rgba(0, 0, 0, 0.42);
+  background-color: rgba(0, 0, 0, 0.62);
   padding-top: 6.4rem !important;
   padding-bottom: 4.4rem !important; }
+
+.top-five-coin:hover {
+  cursor: pointer; }
 
 .coin-holding {
   margin-bottom: 0.4rem !important; }

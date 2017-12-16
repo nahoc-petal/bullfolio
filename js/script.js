@@ -66,15 +66,26 @@ const renderTopFive = (coinObject) => {
         $.each(coinObject, function (index, value) {
             if (i < 6) {
                 $('#myTopFive').append(
-                    `<div class="column has-text-centered">
+                    `<div class="top-five-coin column has-text-centered">
                         <h3 class="subtitle has-text-white coin-holding">${value.name}</h3>
                         <div class="spacer ${index.toLowerCase()}-color"></div>
-                        <h4 class="holding subtitle has-text-white">$${(value.price * value.quantity).toFixed(2)}</h4>
+                        <h4 class="holding-value has-no-margin subtitle has-text-white">$${(value.price * value.quantity).toFixed(2)}</h4>
+                        <h4 class="holding-quantity has-no-margin subtitle has-text-white">${value.quantity} ${index}</h4>
                     </div>`
                 );
             }
             i++;
         });
+        // Hiding top five coins quantity on load
+        $('.holding-quantity').hide();
+
+        // If we click on a top five coin, toggle the value and show the quantity
+        $('.top-five-coin').click(() => {
+            $('.holding-value').toggle();
+            $('.holding-quantity').toggle();
+        });
+
+        // Resolve the promise
         resolve(coinObject);
     });
     return promise;
@@ -91,6 +102,13 @@ const fetchAllCoinsFromAPI = () => {
     });
     return promise;
 };
+
+/**
+ * Function that logs out a connected user
+ */
+const logout = () => {
+    firebase.auth().signOut();
+}
 
 /**
  * Function that removes the loader icon
