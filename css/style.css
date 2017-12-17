@@ -47,7 +47,6 @@ table th {
 table th:hover {
   cursor: pointer; }
 
-.login,
 #balance {
   background-image: url("../images/space.jpg") !important;
   background-size: cover;
@@ -61,6 +60,9 @@ table th:hover {
   bottom: 0;
   display: flex;
   align-items: center; }
+
+.coinLogo {
+  height: 53px !important; }
 
 .coinLogoImage {
   margin-top: 6px; }

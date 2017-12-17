@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 595.3 595.3" style="enable-background:new 0 0 595.3 595.3;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#rect11628_1_);}
+	.st1{fill:url(#rect11633_1_);}
+	.st2{fill:url(#rect11638_1_);}
+	.st3{fill-opacity:2.749143e-02;}
+	.st4{fill-opacity:5.498280e-02;}
+</style>
+<g id="layer1">
+	<g id="g11669" transform="matrix(1.01168 0 0 1.01168 920.285 394.86)">
+		<g id="g11643">
+			
+				<linearGradient id="rect11628_1_" gradientUnits="userSpaceOnUse" x1="-2657.6814" y1="-3.6753" x2="-2506.5002" y2="0.5765" gradientTransform="matrix(3.6931 0 0 3.6931 8964.9883 -84.1633)">
+				<stop  offset="0" style="stop-color:#DB00BC"/>
+				<stop  offset="1" style="stop-color:#3AC0E9"/>
+			</linearGradient>
+			<path id="rect11628" class="st0" d="M-775.6-253.1h128.3l-134,314.8h-128.3L-775.6-253.1z"/>
+			
+				<linearGradient id="rect11633_1_" gradientUnits="userSpaceOnUse" x1="-2674.835" y1="-0.3032" x2="-2523.6536" y2="-3.6704" gradientTransform="matrix(3.6931 0 0 3.6931 8964.9883 -84.1633)">
+				<stop  offset="0" style="stop-color:#DB00BC"/>
+				<stop  offset="1" style="stop-color:#3AC0E9"/>
+			</linearGradient>
+			<path id="rect11633" class="st1" d="M-449.8-253.1h128.5L-473.5,62.4h-128.5L-449.8-253.1z"/>
+			
+				<linearGradient id="rect11638_1_" gradientUnits="userSpaceOnUse" x1="-2674.8567" y1="-1.285" x2="-2523.6755" y2="-4.652" gradientTransform="matrix(3.6931 0 0 3.6931 8964.9883 -84.1633)">
+				<stop  offset="0" style="stop-color:#DB00BC"/>
+				<stop  offset="1" style="stop-color:#3AC0E9"/>
+			</linearGradient>
+			<path id="rect11638" class="st2" d="M-775.6-253.1h128.3l173.9,315.5H-602L-775.6-253.1z"/>
+		</g>
+		<path id="path11656" class="st3" d="M-781.3,61.7h-128.3l262.3-314.8L-781.3,61.7z"/>
+		<path id="path11659" class="st4" d="M-602.1,63.4h128.3l-301.9-316.5L-602.1,63.4L-602.1,63.4z"/>
+		<path id="path11661" class="st4" d="M-602.1,63.4h128.3l-173.7-316.5L-602.1,63.4L-602.1,63.4z"/>
+		<path id="path11663" class="st4" d="M-602.1,63.4h128.3l23.3-319L-602.1,63.4L-602.1,63.4z"/>
+		<path id="path11665" class="st4" d="M-602.1,63.4h128.3l152.5-316.5L-602.1,63.4L-602.1,63.4z"/>
+	</g>
+</g>
+</svg>

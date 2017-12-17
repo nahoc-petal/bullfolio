@@ -197,7 +197,7 @@ const renderCoinsTable = (allCoinsObject) => {
 const isUserLoggedIn = () => {
     const promise = new Promise(function (resolve, reject) {
         firebase.auth().onAuthStateChanged((user) => {
-            (user) ? userId = user.uid: window.location.replace('index.html');
+            (user) ? userId = user.uid: window.location.replace('login.html');
             resolve(userId);
         })
     });
