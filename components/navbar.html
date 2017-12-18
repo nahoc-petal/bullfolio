@@ -1,0 +1,67 @@
+<nav class="navbar is-transparent is-fixed-top">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="images/logo.svg" alt="Bull" height="28" width="40" />
+      </a>
+
+      <button class="button navbar-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div id="navbarExampleTransparentExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="about.html">
+          <span>&nbsp;About</span>
+        </a>
+        <a class="navbar-item is-active" href="index.html">
+          <!--<span class="icon">
+                        <i class="fa fa-pie-chart"></i>
+                    </span>-->
+          <span>&nbsp;Dashboard</span>
+        </a>
+        <!--<a class="navbar-item" href="settings.html">
+                    <span class="icon">
+                        <i class="fa fa-cog"></i>
+                    </span>
+                    <span>&nbsp;Settings</span>
+                </a>-->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">
+            Currency
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="#">
+              CAD
+            </a>
+            <a class="navbar-item" href="#">
+              USD
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <a class="navbar-item" href="https://github.com/nahoc10/bullfolio" target="_blank">
+                <span class="icon" style="color: #333;">
+                  <i class="fa fa-lg fa-github"></i>
+                </span>
+              </a>
+            </p>
+            <p class="control">
+              <button class="button" onclick="logout()">
+                <span>Log out</span>
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

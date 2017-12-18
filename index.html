@@ -5,149 +5,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bullfolio - Cryptocurrency portfolio and tracker</title>
+    <!-- Font awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
-</head>
-
-<body>
-    <div class="noScriptWrapper">
-        <noscript id="noScript" class="noScript">Please <a target="_blank" href="https://www.google.com/search?q=how+to+enable+javascript">enable Javascript</a> in order to use Bullfolio.</noscript>
-    </div>
-    <div class="loaderWrapper">
-        <div class="loader"></div>
-    </div>
-    <nav class="navbar is-transparent is-fixed-top">
-        <div class="container">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="index.html">
-                    <img src="images/logo.svg" alt="Bull" height="28" width="40" />
-                </a>
-
-                <button class="button navbar-burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-
-            <div id="navbarExampleTransparentExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item is-active" href="index.html">
-                        <!--<span class="icon">
-                            <i class="fa fa-pie-chart"></i>
-                        </span>-->
-                        <span>&nbsp;Dashboard</span>
-                    </a>
-                    <!--<a class="navbar-item" href="settings.html">
-                        <span class="icon">
-                            <i class="fa fa-cog"></i>
-                        </span>
-                        <span>&nbsp;Settings</span>
-                    </a>-->
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="#">
-                            Currency
-                        </a>
-                        <div class="navbar-dropdown is-boxed">
-                            <a class="navbar-item" href="#">
-                                CAD
-                            </a>
-                            <a class="navbar-item" href="#">
-                                USD
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="field is-grouped">
-                            <p class="control">
-                                <a class="navbar-item" href="about.html">About
-                                </a>
-                            </p>
-                            <p class="control">
-                                <button class="button" onclick="logout()">
-                                    <span>Log out</span>
-                                </button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <main class="main">
-        <section id="balance" class="hero is-medium is-bold">
-            <div class="hero-body">
-                <!-- pie chart -->
-                <div id="chartContainer"></div>
-                <div class="container">
-                    <h1 class="title balance has-text-centered is-size-1 has-text-white">
-                        0.00$
-                    </h1>
-                    <h2 class="subtitle has-text-centered has-text-white total-value">
-                        Total Value
-                    </h2>
-                    <br/>
-                    <div id="myTopFive" class="columns">
-                    </div>
-                    <br/>
-                    <div class="has-text-centered">
-                        <a class="show-more has-text-white" href="#">Show more</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
-                <!--<div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Search coin">
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-search"></i>
-                    </span>
-                </p>
-            </div>-->
-                <table id="coinTable" class="coins table tablesorter is-striped is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th>
-                                <!-- Logo -->
-                            </th>
-                            <th data-sort="string">Symbol</th>
-                            <th data-sort="string">Name</th>
-                            <th data-sort="float" class="has-text-right">Last hour</th>
-                            <th data-sort="float" class="has-text-right">Last 24h</th>
-                            <th data-sort="float" class="has-text-right">Last week</th>
-                            <th data-sort="float" class="has-text-right">Value ($US)</th>
-                            <th data-sort="float" class="has-text-right">Holdings</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </section>
-    </main>
-    <footer class="footer">
-        <div class="container">
-            <div class="content has-text-centered">
-                <p>
-                    <strong>Bullfolio</strong> by
-                    <a href="http://cohanc.com">Cohan Carpentier</a>. The source code is licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed
-                    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-                </p>
-            </div>
-        </div>
-    </footer>
-    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Local jQuery fallback -->
     <script>
         window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');
     </script>
+    <!-- Script that loads our HTML components -->
+    <script src="js/templates.js"></script>
+</head>
+
+<body>
+    <!-- In case JavaScript is disabled -->
+    <div class="noScriptWrapper">
+        <noscript id="noScript" class="noScript">
+            <span>Please
+                <a target="_blank" href="https://www.google.com/search?q=how+to+enable+javascript">enable Javascript</a> in order to use Bullfolio.</span>
+        </noscript>
+    </div>
+    <!-- Loader component -->
+    <div id="loaderComponent"></div>
+    <!--- Navbar component -->
+    <div id="navbarComponent"></div>
+
+    <main class="main">
+        <!--- Balance component -->
+        <div id="balanceComponent"></div>
+        <section class="section">
+            <div class="container">
+                <!--- Search component -->
+                <div id="searchComponent"></div>
+                <!-- Coin table component -->
+                <div id="coinTableComponent"></div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer component -->
+    <div id="footerComponent"></div>
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
     <script src="js/stupidtable.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/pie.js"></script>

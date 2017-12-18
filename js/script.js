@@ -1,161 +1,162 @@
-// Initialize Firebase
-let config = {
-    apiKey: "AIzaSyDOm4jKsWwOWCcfNQD63DD3JL0mmSGd8h4",
-    authDomain: "cryptoboard2.firebaseapp.com",
-    databaseURL: "https://cryptoboard2.firebaseio.com",
-    projectId: "cryptoboard2",
-    storageBucket: "",
-    messagingSenderId: "650100096146"
-};
-firebase.initializeApp(config);
-let database = firebase.database();
-let userId = null;
-let myCoins = null;
-let balance = null;
+$(document).ready(() => {
+    // Initialize Firebase
+    let config = {
+        apiKey: "AIzaSyDOm4jKsWwOWCcfNQD63DD3JL0mmSGd8h4",
+        authDomain: "cryptoboard2.firebaseapp.com",
+        databaseURL: "https://cryptoboard2.firebaseio.com",
+        projectId: "cryptoboard2",
+        storageBucket: "",
+        messagingSenderId: "650100096146"
+    };
+    firebase.initializeApp(config);
+    let database = firebase.database();
+    let userId = null;
+    let myCoins = null;
+    let balance = null;
 
-/**
- * Function that renders the total balance
- */
-const renderTotalBalance = (totalBalance) => {
-    $('.balance').html('$' + numberWithCommas(totalBalance.toFixed(2)));
-}
+    /**
+     * Function that renders the total balance
+     */
+    const renderTotalBalance = (totalBalance) => {
+        $('.balance').html('$' + numberWithCommas(totalBalance.toFixed(2)));
+    }
 
-/**
- * Function that calculates the total balance
- */
-const calcultateTotalBalance = () => {
-    // Reset the balance in case of an update
-    balance = 0;
-    $.each(myCoins, function (index, value) {
-        balance += value.quantity * value.price;
-    });
-    renderTotalBalance(balance);
-}
-
-/**
- * Function that returns a negativeValue class if the number is negative and
- * positiveValue class if it's positive
- */
-const isPositive = (value) => {
-    return (value[0] === '-' ? "negativeValue" : "positiveValue");
-}
-
-/**
- * Function that formats big numbers to add a comma in the thousands
- */
-const numberWithCommas = (x) => {
-    var parts = x.toString().split(".");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return parts.join(".");
-}
-
-/**
- * Function that fetches the coins holding of a logged in user
- */
-const fetchCoins = () => {
-    const promise = new Promise(function (resolve, reject) {
-        firebase.database().ref('myCoins/' + userId).once('value').then((snapshot) => {
-            // Fetch completed
-            (snapshot) ? myCoins = snapshot.val(): null;
-            resolve(snapshot.val());
-        });
-    });
-    return promise;
-};
-
-/**
- * Function that writes the coins holding to the database
- */
-const writeUserData = (userId, coinSymbol, coinName, coinQuantity, coinPrice) => {
-    const promise = new Promise(function (resolve, reject) {
-        firebase.database().ref('myCoins/' + userId + '/' + coinSymbol).set({
-            quantity: coinQuantity,
-            name: coinName,
-            price: coinPrice,
-        })
-        resolve(true);
-    });
-    return promise;
-};
-
-/**
- * Function that renders our top 5 cryptos
- */
-const renderTopFive = () => {
-    // We delete the top 5 in case it's an update
-    $('#myTopFive').html("");
-    const promise = new Promise(function (resolve, reject) {
-        let i = 0;
+    /**
+     * Function that calculates the total balance
+     */
+    const calcultateTotalBalance = () => {
+        // Reset the balance in case of an update
+        balance = 0;
         $.each(myCoins, function (index, value) {
-            if (i < 6) {
-                $('#myTopFive').append(
-                    `<div class="top-five-coin column has-text-centered">
+            balance += value.quantity * value.price;
+        });
+        renderTotalBalance(balance);
+    }
+
+    /**
+     * Function that returns a negativeValue class if the number is negative and
+     * positiveValue class if it's positive
+     */
+    const isPositive = (value) => {
+        return (value[0] === '-' ? "negativeValue" : "positiveValue");
+    }
+
+    /**
+     * Function that formats big numbers to add a comma in the thousands
+     */
+    const numberWithCommas = (x) => {
+        var parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return parts.join(".");
+    }
+
+    /**
+     * Function that fetches the coins holding of a logged in user
+     */
+    const fetchCoins = () => {
+        const promise = new Promise(function (resolve, reject) {
+            firebase.database().ref('myCoins/' + userId).once('value').then((snapshot) => {
+                // Fetch completed
+                (snapshot) ? myCoins = snapshot.val(): null;
+                resolve(snapshot.val());
+            });
+        });
+        return promise;
+    };
+
+    /**
+     * Function that writes the coins holding to the database
+     */
+    const writeUserData = (userId, coinSymbol, coinName, coinQuantity, coinPrice) => {
+        const promise = new Promise(function (resolve, reject) {
+            firebase.database().ref('myCoins/' + userId + '/' + coinSymbol).set({
+                quantity: coinQuantity,
+                name: coinName,
+                price: coinPrice,
+            })
+            resolve(true);
+        });
+        return promise;
+    };
+
+    /**
+     * Function that renders our top 5 cryptos
+     */
+    const renderTopFive = () => {
+        // We delete the top 5 in case it's an update
+        $('#myTopFive').html("");
+        const promise = new Promise(function (resolve, reject) {
+            let i = 0;
+            $.each(myCoins, function (index, value) {
+                if (i < 6) {
+                    $('#myTopFive').append(
+                        `<div class="top-five-coin column has-text-centered">
                         <h3 class="subtitle has-text-white coin-holding">${value.name}</h3>
                         <div class="spacer ${index.toLowerCase()}-color"></div>
                         <h4 class="holding-value has-no-margin subtitle has-text-white">$${(value.price * value.quantity).toFixed(2)}</h4>
                         <h4 class="holding-quantity has-no-margin subtitle has-text-white">${value.quantity} ${index}</h4>
                     </div>`
-                );
-            }
-            i++;
+                    );
+                }
+                i++;
+            });
+            // Hiding top five coins quantity on load
+            $('.holding-quantity').hide();
+
+            // If we click on a top five coin, toggle the value and show the quantity
+            $('.top-five-coin').click(() => {
+                $('.holding-value').toggle();
+                $('.holding-quantity').toggle();
+            });
+
+            // Resolve the promise
+            resolve(myCoins);
         });
-        // Hiding top five coins quantity on load
-        $('.holding-quantity').hide();
+        return promise;
+    };
 
-        // If we click on a top five coin, toggle the value and show the quantity
-        $('.top-five-coin').click(() => {
-            $('.holding-value').toggle();
-            $('.holding-quantity').toggle();
+    /**
+     * Function that fetchs all coins from CoinMarketCap
+     */
+    const fetchAllCoinsFromAPI = () => {
+        const promise = new Promise(function (resolve, reject) {
+            fetch('https://api.coinmarketcap.com/v1/ticker/').then(function (response) {
+                resolve(response.json());
+            })
         });
+        return promise;
+    };
 
-        // Resolve the promise
-        resolve(myCoins);
-    });
-    return promise;
-};
+    /**
+     * Function that logs out a connected user
+     */
+    const logout = () => {
+        firebase.auth().signOut();
+    }
 
-/**
- * Function that fetchs all coins from CoinMarketCap
- */
-const fetchAllCoinsFromAPI = () => {
-    const promise = new Promise(function (resolve, reject) {
-        fetch('https://api.coinmarketcap.com/v1/ticker/').then(function (response) {
-            resolve(response.json());
-        })
-    });
-    return promise;
-};
+    /**
+     * Function that removes the loader icon
+     */
+    const removeLoader = () => {
+        $('.main').show();
+        $('.loaderWrapper').fadeOut();
+    };
 
-/**
- * Function that logs out a connected user
- */
-const logout = () => {
-    firebase.auth().signOut();
-}
-
-/**
- * Function that removes the loader icon
- */
-const removeLoader = () => {
-    $('.main').show();
-    $('.loaderWrapper').fadeOut();
-};
-
-/**
- * Function that renders the coins table
- */
-const renderCoinsTable = (allCoinsObject) => {
-    let coins = [];
-    const $coins = $('.coins');
-    $.each(allCoinsObject, function (i, item) {
-        let coinQuantity = "";
-        if (myCoins) {
-            if (item.symbol in myCoins) {
-                coinQuantity = myCoins[item.symbol].quantity;
+    /**
+     * Function that renders the coins table
+     */
+    const renderCoinsTable = (allCoinsObject) => {
+        let coins = [];
+        const $coins = $('.coins');
+        $.each(allCoinsObject, function (i, item) {
+            let coinQuantity = "";
+            if (myCoins) {
+                if (item.symbol in myCoins) {
+                    coinQuantity = myCoins[item.symbol].quantity;
+                }
             }
-        }
-        coins.push(
-            `<tr>
+            coins.push(
+                `<tr>
                 <td class="coinLogo"><img class="coinLogoImage" src="images/coins/${item.symbol}.svg" width="24" height="24" alt="" /></td>
                 <td class="coinSymbol" data-sort-value="${item.symbol}">${item.symbol}</td>
                 <td class="coinName" data-sort-value="${item.name}">${item.name}</td>
@@ -167,56 +168,58 @@ const renderCoinsTable = (allCoinsObject) => {
                     <input value="${coinQuantity}" placeholder="0" class="input holding-input has-text-right coinQuantity" type="number"/>
                 </td>
             </tr>`
-        );
-    });
-    // Add sortability to the results
-    $("table").stupidtable();
-    $coins.append(coins.join(''));
+            );
+        });
+        // Add sortability to the results
+        $("table").stupidtable();
+        $coins.append(coins.join(''));
 
-    // On focus out, update the quantity
-    $(".holding-input").focusout(function () {
-        $(this).parent().addClass('is-loading');
-        let coinSymbol = $(this).parent().prevAll('.coinSymbol').html();
-        let coinName = $(this).parent().prevAll('.coinName').html();
-        let coinPrice = $(this).parent().prevAll('.coinPrice').html().replace(/[^\d.-]/g, '');
-        let coinQuantity = $(this).val().replace(/[^\d.-]/g, '');
-        console.log(coinQuantity);
-        (coinQuantity === '') ? coinQuantity = 0: null;
-        writeUserData(userId, coinSymbol, coinName, coinQuantity, coinPrice)
+        // On focus out, update the quantity
+        $(".holding-input").focusout(function () {
+            $(this).parent().addClass('is-loading');
+            let coinSymbol = $(this).parent().prevAll('.coinSymbol').html();
+            let coinName = $(this).parent().prevAll('.coinName').html();
+            let coinPrice = $(this).parent().prevAll('.coinPrice').html().replace(/[^\d.-]/g, '');
+            let coinQuantity = $(this).val().replace(/[^\d.-]/g, '');
+            console.log(coinQuantity);
+            (coinQuantity === '') ? coinQuantity = 0: null;
+            writeUserData(userId, coinSymbol, coinName, coinQuantity, coinPrice)
+                .then(fetchCoins)
+                .then(renderTopFive)
+                .then(calcultateTotalBalance);
+
+            $(this).parent().removeClass('is-loading');
+        });
+        removeLoader();
+    };
+
+    /**
+     * Function that checks if the user is logged in
+     */
+    const isUserLoggedIn = () => {
+        const promise = new Promise(function (resolve, reject) {
+            firebase.auth().onAuthStateChanged((user) => {
+                (user) ? userId = user.uid: window.location.replace('login.html');
+                resolve(userId);
+            })
+        });
+        return promise;
+    };
+
+    /**
+     * Function that initializes our app on startup
+     */
+    init = () => {
+        isUserLoggedIn()
+            .then(loadComponents)
             .then(fetchCoins)
             .then(renderTopFive)
-            .then(calcultateTotalBalance);
+            .then(fetchAllCoinsFromAPI)
+            .then(renderCoinsTable)
+            .then(calcultateTotalBalance)
+            .then(renderPieChart);
+    }
 
-        $(this).parent().removeClass('is-loading');
-    });
-    removeLoader();
-};
-
-/**
- * Function that checks if the user is logged in
- */
-const isUserLoggedIn = () => {
-    const promise = new Promise(function (resolve, reject) {
-        firebase.auth().onAuthStateChanged((user) => {
-            (user) ? userId = user.uid: window.location.replace('login.html');
-            resolve(userId);
-        })
-    });
-    return promise;
-};
-
-/**
- * Function that initializes our app on startup
- */
-init = () => {
-    $('.noScriptWrapper').hide();
-    isUserLoggedIn()
-        .then(fetchCoins)
-        .then(renderTopFive)
-        .then(fetchAllCoinsFromAPI)
-        .then(renderCoinsTable)
-        .then(calcultateTotalBalance);
-}
-
-// Init
-init();
+    // Init
+    init();
+});
