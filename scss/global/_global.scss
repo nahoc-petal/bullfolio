@@ -106,6 +106,10 @@ table th:hover {
     }
 }
 
+.total-value {
+    opacity: 0.8;
+}
+
 .sorting-asc:after {
     content: '▲';
     position: absolute;
