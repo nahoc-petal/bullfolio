@@ -31,12 +31,31 @@
 
             <div id="navbarExampleTransparentExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item is-active" href="dashboard.html/">
-                        Dashboard
+                    <a class="navbar-item is-active" href="index.html">
+                        <!--<span class="icon">
+                            <i class="fa fa-pie-chart"></i>
+                        </span>-->
+                        <span>&nbsp;Dashboard</span>
                     </a>
-                    <a class="navbar-item" href="dashboard.html/">
-                        Settings
-                    </a>
+                    <!--<a class="navbar-item" href="settings.html">
+                        <span class="icon">
+                            <i class="fa fa-cog"></i>
+                        </span>
+                        <span>&nbsp;Settings</span>
+                    </a>-->
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" href="#">
+                            Currency
+                        </a>
+                        <div class="navbar-dropdown is-boxed">
+                            <a class="navbar-item" href="#">
+                                CAD
+                            </a>
+                            <a class="navbar-item" href="#">
+                                USD
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="navbar-end">
@@ -59,6 +78,8 @@
     </nav>
     <section id="balance" class="hero is-medium is-bold">
         <div class="hero-body">
+            <!-- pie chart -->
+            <div id="chartContainer"></div>
             <div class="container">
                 <h1 class="title balance has-text-centered is-size-1 has-text-white">
                     0.00$
@@ -68,6 +89,10 @@
                 </h2>
                 <br/>
                 <div id="myTopFive" class="columns">
+                </div>
+                <br/>
+                <div class="has-text-centered">
+                    <a class="show-more has-text-white" href="#">Show more</a>
                 </div>
             </div>
         </div>
@@ -117,6 +142,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/stupidtable.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/pie.js"></script>
+    <script src="js/canvasjs.min.js"></script>
 </body>
 
 </html>

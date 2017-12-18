@@ -1,3 +1,7 @@
+#myTopFive {
+    padding-top: 8rem;
+}
+
 .btc-color {
     border-color: $btcColor;
 }
@@ -11,29 +15,33 @@
 }
 
 .ltc-color {
-    border-color: $ltcColor
+    border-color: $ltcColor;
 }
 
 .xrp-color {
-    border-color: $xrpColor
+    border-color: $xrpColor;
 }
 
 .neo-color {
-    border-color: $neoColor
+    border-color: $neoColor;
 }
 
 .omg-color {
-    border-color: $omgColor
+    border-color: $omgColor;
 }
 
 .doge-color {
-    border-color: $dogeColor
+    border-color: $dogeColor;
 }
 
 .bcn-color {
-    border-color: $bcnColor
+    border-color: $bcnColor;
 }
 
 .steem-color {
-    border-color: $steemColor
+    border-color: $steemColor;
+}
+
+.bch-color {
+    border-color: $bchColor;
 }

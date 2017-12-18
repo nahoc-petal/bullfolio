@@ -1,0 +1,16 @@
+.canvasjs-chart-credit {
+    display: none;
+}
+
+#chartContainer {
+    height: 400px;
+    max-width: 920px;
+    margin: 0px auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 90px;
+    img {
+        display: none!important;
+    }
+}

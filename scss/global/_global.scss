@@ -87,26 +87,23 @@ table th:hover {
     text-align: center;
 }
 
-.spacer {
-    border-top: 2px solid white;
-    margin-bottom: 0.4rem;
-}
-
-.hero-body {
-    margin-top: 56px;
-    background-color: rgba(0, 0, 0, 0.62);
-    padding-top: 6.4rem!important;
-    padding-bottom: 4.4rem!important;
-}
-
-.top-five-coin {
-    &:hover {
-        cursor: pointer;
-    }
-}
-
 .coin-holding {
     margin-bottom: 0.4rem!important;
+}
+
+.navbar .fa {
+    color: #aaa;
+}
+
+.navbar-item:hover .fa {
+    color: #3273dc;
+}
+
+.navbar .is-active {
+    color: #3273dc!important;
+    .fa {
+        color: #3273dc;
+    }
 }
 
 .sorting-asc:after {

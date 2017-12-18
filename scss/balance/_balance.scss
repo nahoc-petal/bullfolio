@@ -1,0 +1,24 @@
+.spacer {
+    border-top: 2px solid white;
+    margin-bottom: 0.4rem;
+}
+
+.hero-body {
+    margin-top: 56px;
+    background-color: rgba(0, 0, 0, 0.82);
+    padding-top: 12.7rem!important;
+    padding-bottom: 2.2rem!important;
+}
+
+.top-five-coin {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.show-more {
+    opacity: 0.8;
+    &:hover {
+        opacity: 1;
+    }
+}

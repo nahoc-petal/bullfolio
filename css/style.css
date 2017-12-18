@@ -73,21 +73,19 @@ table th:hover {
   right: 0;
   text-align: center; }
 
-.spacer {
-  border-top: 2px solid white;
-  margin-bottom: 0.4rem; }
-
-.hero-body {
-  margin-top: 56px;
-  background-color: rgba(0, 0, 0, 0.62);
-  padding-top: 6.4rem !important;
-  padding-bottom: 4.4rem !important; }
-
-.top-five-coin:hover {
-  cursor: pointer; }
-
 .coin-holding {
   margin-bottom: 0.4rem !important; }
+
+.navbar .fa {
+  color: #aaa; }
+
+.navbar-item:hover .fa {
+  color: #3273dc; }
+
+.navbar .is-active {
+  color: #3273dc !important; }
+  .navbar .is-active .fa {
+    color: #3273dc; }
 
 .sorting-asc:after {
   content: '▲';
@@ -121,6 +119,27 @@ table th:hover {
 .ltc-color {
   border-color: #BEBEBE; }
 
+.spacer {
+  border-top: 2px solid white;
+  margin-bottom: 0.4rem; }
+
+.hero-body {
+  margin-top: 56px;
+  background-color: rgba(0, 0, 0, 0.82);
+  padding-top: 12.7rem !important;
+  padding-bottom: 2.2rem !important; }
+
+.top-five-coin:hover {
+  cursor: pointer; }
+
+.show-more {
+  opacity: 0.8; }
+  .show-more:hover {
+    opacity: 1; }
+
+#myTopFive {
+  padding-top: 8rem; }
+
 .btc-color {
   border-color: #F0933A; }
 
@@ -150,5 +169,22 @@ table th:hover {
 
 .steem-color {
   border-color: #60A1EC; }
+
+.bch-color {
+  border-color: #E38F39; }
+
+.canvasjs-chart-credit {
+  display: none; }
+
+#chartContainer {
+  height: 400px;
+  max-width: 920px;
+  margin: 0px auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 90px; }
+  #chartContainer img {
+    display: none !important; }
 
 /*# sourceMappingURL=style.css.map */
