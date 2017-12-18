@@ -19,10 +19,11 @@ limitations under the License.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bull - Cryptocurrency portfolio and tracker</title>
+  <title>Bullfolio - Cryptocurrency portfolio and tracker</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="favicon.png">
+  <script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
   <script src="/__/firebase/4.0.0/firebase-app.js"></script>
   <script src="/__/firebase/4.0.0/firebase-auth.js"></script>
   <script src="/__/firebase/init.js"></script>
@@ -124,6 +125,81 @@ limitations under the License.
       initApp();
     };
   </script>
+
+
+  <script>
+    // initialize Account Kit with CSRF protection
+    AccountKit_OnInteractive = function () {
+      AccountKit.init({
+        appId: "{{FACEBOOK_APP_ID}}",
+        state: "{{csrf}}",
+        version: "{{ACCOUNT_KIT_API_VERSION}}",
+        fbAppEventsEnabled: true,
+        redirect: "{{REDIRECT_URL}}"
+      });
+    };
+
+    // login callback
+    function loginCallback(response) {
+      if (response.status === "PARTIALLY_AUTHENTICATED") {
+        var code = response.code;
+        var csrf = response.state;
+        // Send code to server to exchange for access token
+      } else if (response.status === "NOT_AUTHENTICATED") {
+        // handle authentication failure
+      } else if (response.status === "BAD_PARAMS") {
+        // handle bad parameters
+      }
+    }
+
+    // phone form submission handler
+    function smsLogin() {
+      var countryCode = document.getElementById("country_code").value;
+      var phoneNumber = document.getElementById("phone_number").value;
+      AccountKit.login(
+        'PHONE', {
+          countryCode: countryCode,
+          phoneNumber: phoneNumber
+        }, // will use default values if not specified
+        loginCallback
+      );
+    }
+
+
+    // email form submission handler
+    function emailLogin() {
+      var emailAddress = document.getElementById("email").value;
+      AccountKit.login(
+        'EMAIL', {
+          emailAddress: emailAddress
+        },
+        loginCallback
+      );
+    }
+  </script>
+
+<script>
+  var provider = new firebase.auth.TwitterAuthProvider();
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+  // You can use these server side with your app's credentials to access the Twitter API.
+  var token = result.credential.accessToken;
+  var secret = result.credential.secret;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});
+</script>
+
 </head>
 
 <body>
@@ -171,6 +247,12 @@ limitations under the License.
   </nav>
   <div class="login">
     <div class="loginButtons">
+      <input value="+1" id="country_code" />
+      <input placeholder="phone number" id="phone_number" />
+      <button onclick="smsLogin();">Login via SMS</button>
+      <div>OR</div>
+      <input placeholder="email" id="email" />
+      <button onclick="emailLogin();">Login via Email</button>
       <!-- Button that handles sign-in/sign-out -->
       <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in with Google</button>
       <span id="quickstart-sign-in-status">Unknown</span>

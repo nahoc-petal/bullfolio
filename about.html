@@ -12,12 +12,6 @@
 </head>
 
 <body>
-    <div class="noScriptWrapper">
-        <noscript id="noScript" class="noScript">Please <a target="_blank" href="https://www.google.com/search?q=how+to+enable+javascript">enable Javascript</a> in order to use Bullfolio.</noscript>
-    </div>
-    <div class="loaderWrapper">
-        <div class="loader"></div>
-    </div>
     <nav class="navbar is-transparent is-fixed-top">
         <div class="container">
             <div class="navbar-brand">
@@ -34,7 +28,7 @@
 
             <div id="navbarExampleTransparentExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item is-active" href="index.html">
+                    <a class="navbar-item" href="index.html">
                         <!--<span class="icon">
                             <i class="fa fa-pie-chart"></i>
                         </span>-->
@@ -65,7 +59,7 @@
                     <div class="navbar-item">
                         <div class="field is-grouped">
                             <p class="control">
-                                <a class="navbar-item" href="about.html">About
+                                <a class="navbar-item is-active" href="about.html">About
                                 </a>
                             </p>
                             <p class="control">
@@ -79,63 +73,54 @@
             </div>
         </div>
     </nav>
-    <main class="main">
-        <section id="balance" class="hero is-medium is-bold">
-            <div class="hero-body">
-                <!-- pie chart -->
-                <div id="chartContainer"></div>
-                <div class="container">
-                    <h1 class="title balance has-text-centered is-size-1 has-text-white">
-                        0.00$
-                    </h1>
-                    <h2 class="subtitle has-text-centered has-text-white total-value">
-                        Total Value
-                    </h2>
-                    <br/>
-                    <div id="myTopFive" class="columns">
-                    </div>
-                    <br/>
-                    <div class="has-text-centered">
-                        <a class="show-more has-text-white" href="#">Show more</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
-                <!--<div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Search coin">
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-search"></i>
-                    </span>
+
+    <section class="section is-first-section">
+        <div class="container">
+            <section class="section">
+                <h2 class="subtitle">About Bull</h2>
+                <hr>
+                <p>Bull is an <a href="https://github.com/nahoc10/bull">open source</a> cryptocurrency portfolio and tracker. The goal is to clearly show you how much money you're holding and what has changed in the last week.
                 </p>
-            </div>-->
-                <table id="coinTable" class="coins table tablesorter is-striped is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th>
-                                <!-- Logo -->
-                            </th>
-                            <th data-sort="string">Symbol</th>
-                            <th data-sort="string">Name</th>
-                            <th data-sort="float" class="has-text-right">Last hour</th>
-                            <th data-sort="float" class="has-text-right">Last 24h</th>
-                            <th data-sort="float" class="has-text-right">Last week</th>
-                            <th data-sort="float" class="has-text-right">Value ($US)</th>
-                            <th data-sort="float" class="has-text-right">Holdings</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+            </section>
+            <section class="section">
+                <h2 class="subtitle">Inspiration</h2>
+                <hr>
+                <p>Bull is loosely inspired off different apps, namely
+                    <a href="https://www.blockfolio.com/">Blockfolio</a> and
+                    <a href="https://www.exodus.io/">Exodus</a>, which I both use daily. The reason I built Bull is simple: I love building stuff and was
+                    looking for a desktop version of
+                    I decided to create my very own cryptocurrency tracker. I strongly believe you should build things for
+                    yourself first and then make it available to anyone. If you're looking for new features, feel free to
+                    <a href="mailto:cohan.carpentier@gmail.com">contact me </a>or
+                    <a href="https://github.com/nahoc10/bull/">implement them yourself</a>!</p>
+            </section>
+            <section class="section">
+                <h2 class="subtitle">Technologies</h2>
+                <hr>
+                <p>This is a simple project built off the following technologies and frameworks:</p>
+                <br/>
+                <ul>
+                    <li>*
+                        <a href="https://bulma.io/">Bulma</a> for the CSS
+                    </li>
+                    <li>*
+                        <a href="https://coinmarketcap.com/">CoinMarketCap</a>'s API
+                    </li>
+                    <li>*
+                        <a href="https://jquery.com/">jQuery</a>
+                    </li>
+                    <li>*
+                        <a href="https://firebase.google.com/">Firebase</a> for the database and login flow
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </section>
     <footer class="footer">
         <div class="container">
             <div class="content has-text-centered">
                 <p>
-                    <strong>Bullfolio</strong> by
+                    <strong>Bull</strong> by
                     <a href="http://cohanc.com">Cohan Carpentier</a>. The source code is licensed
                     <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed
                     <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
@@ -145,13 +130,6 @@
     </footer>
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');
-    </script>
-    <script src="js/stupidtable.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/pie.js"></script>
-    <script src="js/canvasjs.min.js"></script>
 </body>
 
 </html>

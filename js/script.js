@@ -137,6 +137,7 @@ const logout = () => {
  * Function that removes the loader icon
  */
 const removeLoader = () => {
+    $('.main').show();
     $('.loaderWrapper').fadeOut();
 };
 
@@ -208,6 +209,7 @@ const isUserLoggedIn = () => {
  * Function that initializes our app on startup
  */
 init = () => {
+    $('.noScriptWrapper').hide();
     isUserLoggedIn()
         .then(fetchCoins)
         .then(renderTopFive)
