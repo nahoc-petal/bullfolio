@@ -80,10 +80,10 @@ $(document).ready(() => {
     };
 
     /**
-     * Function that renders our top 5 cryptos
+     * Function that renders our top cryptos
      */
-    const renderTopFive = () => {
-        // We delete the top 5 in case it's an update
+    const renderTopCoins = () => {
+        // We delete the top cryptos in case it's an update
         $('#myTopFive').html("");
         const promise = new Promise(function (resolve, reject) {
             let i = 0;
@@ -185,7 +185,7 @@ $(document).ready(() => {
             (coinQuantity === '') ? coinQuantity = 0: null;
             writeUserData(userId, coinSymbol, coinName, coinQuantity, coinPrice)
                 .then(fetchCoins)
-                .then(renderTopFive)
+                .then(renderTopCoins)
                 .then(calcultateTotalBalance);
 
             $(this).parent().removeClass('is-loading');
@@ -213,7 +213,7 @@ $(document).ready(() => {
         isUserLoggedIn()
             .then(loadComponents)
             .then(fetchCoins)
-            .then(renderTopFive)
+            .then(renderTopCoins)
             .then(fetchAllCoinsFromAPI)
             .then(renderCoinsTable)
             .then(calcultateTotalBalance)
