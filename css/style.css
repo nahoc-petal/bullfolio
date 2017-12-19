@@ -34,6 +34,9 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   text-align: center; }
 
+.title {
+  font-weight: 200; }
+
 .noScriptWrapper {
   width: 100%;
   height: 100vh;
@@ -101,10 +104,24 @@ table th:hover {
   margin-top: 6px; }
 
 .loginButtons {
+  margin: auto;
   position: absolute;
   left: 0;
   right: 0;
-  text-align: center; }
+  text-align: center;
+  width: 100%;
+  max-width: 220px; }
+  .loginButtons .button {
+    width: 100%;
+    border: 0; }
+  .loginButtons .button-google {
+    background-color: #d34836; }
+  .loginButtons .button-facebook {
+    background-color: #3B5998; }
+  .loginButtons .button-twitter {
+    background-color: #00aced; }
+  .loginButtons .button-github {
+    background-color: #333; }
 
 .coin-holding {
   margin-bottom: 0.4rem !important; }
@@ -160,21 +177,27 @@ table th:hover {
   margin-bottom: 0.4rem; }
 
 .hero-body {
-  margin-top: 56px;
-  background-color: rgba(0, 0, 0, 0.82);
-  padding-top: 12.7rem !important;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding-top: 16.3rem !important;
   padding-bottom: 2.2rem !important; }
 
 .top-five-coin:hover {
   cursor: pointer; }
 
 .show-more {
+  display: none;
   opacity: 0.8; }
   .show-more:hover {
     opacity: 1; }
 
-#myTopFive {
-  padding-top: 8rem; }
+.myTopFive {
+  padding-top: 8rem;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.restOfTheCoins {
+  flex-wrap: wrap;
+  justify-content: center; }
 
 .btc-color {
   border-color: #F0933A; }
@@ -212,6 +235,7 @@ table th:hover {
 .canvasjs-chart-credit {
   display: none; }
 
+#darkerChartContainer,
 #chartContainer {
   height: 400px;
   max-width: 920px;
@@ -220,7 +244,12 @@ table th:hover {
   left: 0;
   right: 0;
   top: 90px; }
-  #chartContainer img {
-    display: none !important; }
+
+#darkerChartContainer {
+  height: 360px;
+  top: 110px; }
+
+#searchBar {
+  align-items: center; }
 
 /*# sourceMappingURL=style.css.map */

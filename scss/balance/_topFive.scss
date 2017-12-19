@@ -1,6 +1,14 @@
-#myTopFive {
+.myTopFive {
     padding-top: 8rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+.restOfTheCoins {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 
 .btc-color {
     border-color: $btcColor;

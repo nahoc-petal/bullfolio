@@ -2,6 +2,7 @@
   <div class="hero-body">
     <!-- pie chart -->
     <div id="chartContainer"></div>
+    <div id="darkerChartContainer"></div>
     <div class="container">
       <h1 class="title balance has-text-centered is-size-1 has-text-white">
         0.00$
@@ -9,12 +10,12 @@
       <h2 class="subtitle has-text-centered has-text-white total-value">
         Total Value
       </h2>
-      <br/>
-      <div id="myTopFive" class="columns">
+      <div id="myTopFive" class="columns myTopFive">
       </div>
-      <br/>
+      <div id="restOfTheCoins" class="columns restOfTheCoins">
+      </div>
       <div class="has-text-centered">
-        <a class="show-more has-text-white" href="#">Show more</a>
+        <a class="show-more has-text-white" onclick="showMore()">Show more</a>
       </div>
     </div>
   </div>

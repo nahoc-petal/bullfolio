@@ -2,6 +2,7 @@
     display: none;
 }
 
+#darkerChartContainer,
 #chartContainer {
     height: 400px;
     max-width: 920px;
@@ -10,7 +11,9 @@
     left: 0;
     right: 0;
     top: 90px;
-    img {
-        display: none!important;
-    }
+}
+
+#darkerChartContainer {
+    height: 360px;
+    top: 110px;
 }

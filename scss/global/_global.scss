@@ -41,6 +41,10 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
 }
 
+.title {
+    font-weight: 200;
+}
+
 .noScriptWrapper {
     width: 100%;
     height: 100vh;
@@ -121,10 +125,29 @@ table th:hover {
 }
 
 .loginButtons {
+    margin: auto;
     position: absolute;
     left: 0;
     right: 0;
     text-align: center;
+    width: 100%;
+    max-width: 220px;
+    .button {
+        width: 100%;
+        border: 0;
+    }
+    .button-google {
+        background-color: $googleColor;
+    }
+    .button-facebook {
+        background-color: $facebookColor;
+    }
+    .button-twitter {
+        background-color: $twitterColor;
+    }
+    .button-github {
+        background-color: $githubColor;
+    }
 }
 
 .coin-holding {
