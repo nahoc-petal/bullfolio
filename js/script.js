@@ -182,6 +182,22 @@ $(document).ready(() => {
     };
 
     /**
+     * Function that clears all holdings
+     */
+    clearAllHoldings = () => {
+        fetchAllCoinsFromAPI().then((response) => {
+            $.each(response, function (index, value) {
+                firebase.database().ref('myCoins/' + userId + '/' + value.symbol).set({
+                    quantity: 0,
+                    name: value.name,
+                    price: value.price_usd,
+                })
+            });
+        });
+        $('.holding-input').val("");
+    }
+
+    /**
      * Function that formats big numbers to add a comma in the thousands
      */
     const numberWithCommas = (x) => {
@@ -229,7 +245,7 @@ $(document).ready(() => {
         const promise = new Promise(function (resolve, reject) {
             let i = 0;
             $.each(myCoins, function (index, value) {
-                if (i < 6) {
+                if (i < 6 && value.quantity !== 0) {
                     $('#myTopFive').append(
                         `<div class="top-five-coin column is-2 has-text-centered" data-value="${(value.price * value.quantity).toFixed(2)}">
                         <h3 class="subtitle has-text-white coin-holding">${value.name}</h3>
@@ -307,10 +323,12 @@ $(document).ready(() => {
         let coinsArray = [];
         const $coins = $('.coins');
         $.each(allCoins, function (i, item) {
-            let coinQuantity = "";
+            let coinQuantity;
             if (myCoins) {
                 if (item.symbol in myCoins) {
-                    coinQuantity = myCoins[item.symbol].quantity;
+                    if(myCoins[item.symbol].quantity !== 0) {
+                        coinQuantity = myCoins[item.symbol].quantity;
+                    }
                 }
             }
             coinsArray.push(
